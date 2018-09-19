@@ -1,0 +1,26 @@
+.scoreboard {
+  background: black;
+  color: white;
+}
+
+.glove1 {
+  width: 53px;
+  height: 37px;
+  background: url('../../glove.jpg');
+  /* margin-top: -10px;
+  margin-right: 10px; */
+}
+
+.glove2 {
+  width: 53px;
+  height: 37px;
+  background: url('../../glove.jpg');
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+  /* margin-top: -10px;
+  margin-left: 10px; */
+}

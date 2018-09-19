@@ -1,10 +1,11 @@
 import React from 'react';
+import './header.css';
 
 const Header = () => (
   <div className="container">
-    <div className="jumbotron text-center">
-      <h1>Click-Out!!</h1>
-      <p>Click on a character to earn points, if you click the same character twice you lose!</p>
+    <div className="jumbotron bg text-center">
+      <h1 className="logo">Click-Out!!</h1>
+      <p className="desc">Click on a character to earn points, if you click the same character twice you lose!</p>
     </div>
   </div>
 );

@@ -1,5 +1,5 @@
 .navigation {
-  position: fixed;
-  top: 0;
-  left: 0;
+  background: black;
+  text-decoration: none;
+  color: #2d9bec;
 }

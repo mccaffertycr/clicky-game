@@ -1,18 +1,15 @@
 import React from 'react';
 import './nav.css';
 
-const Nav = props => (
-  <div className="container-fluid">
-    <nav className="navbar mb-1 bg-light">
+const Nav = () => (
+    <nav className="navbar mb-1 navigation">
       <div className="navbar-header">
         <a className="navbar-brand" href="/">Click-Out!!</a>
       </div>
       <ul className="nav navbar-nav">
-        <li>{props.msg}</li>
-        <li>Score: {props.score} | High Score: {props.highScore}</li>
+        <a href="https://github.com/mccaffertycr/clicky-game">GitHub Repo</a>
       </ul>
     </nav>
-  </div>
 );
 
 export default Nav;

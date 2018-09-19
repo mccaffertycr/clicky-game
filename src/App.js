@@ -3,8 +3,9 @@ import chars from './chars.json';
 import Wrapper from './components/wrapper/wrapper';
 import Nav from './components/nav/nav';
 import Header from './components/header/header';
+import Scoreboard from './components/scoreboard/scoreboard';
 import ImgCard from './components/imgCard/imgCard';
-import Footer from './components/footer/footer';
+
 
 function randomChars(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -46,8 +47,12 @@ class App extends Component {
     if (newScore >= this.state.highScore) {
       this.setState({ highScore: newScore });
     }
-    else if (newScore === 12) {
-      this.setState({ msg: "You win!" });
+    if (newScore === 12) {
+      this.setState({ 
+        msg: 'You win!', 
+        score: 0,
+        selected: []
+      });
     }
     this.shuffleChars();
   };
@@ -65,12 +70,13 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Nav 
+        <Nav />
+        <Header />
+        <Scoreboard 
           msg={this.state.msg}
           score={this.state.score}
           highScore={this.state.highScore}
         />
-        <Header />
         <div className="container">
         {
           this.state.chars.map(char => (
@@ -86,7 +92,6 @@ class App extends Component {
           ))
         }
         </div>
-        <Footer />
       </Wrapper>
     )
   }
