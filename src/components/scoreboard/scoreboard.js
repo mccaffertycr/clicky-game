@@ -2,7 +2,7 @@ import React from 'react';
 import './scoreboard.css';
 
 const Scoreboard = props => (
-  <div className="container text-center">
+  <div className="container text-center mb-3">
     <div className="row">
       <div className="col-sm-6">
         <div className="row">
