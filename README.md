@@ -5,7 +5,7 @@ Memory game built with react. Click on each character once to win, if you click 
 
 * live demo: https://connormccafferty.com/clicky-game
 
-![Screenshot](/public/example_screencap.png)
+![Screenshot](public/example_screencap.png)
 
 ## Technologies
 * ES6
