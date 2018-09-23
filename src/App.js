@@ -23,7 +23,8 @@ class App extends Component {
     highScore: 0,
     chars: chars,
     selected: [],
-    gameover: false
+    gameover: false,
+    countdown: '',
   }
 
   shuffleChars = () => {
@@ -37,16 +38,16 @@ class App extends Component {
         this.increment();
         this.setState({ selected: [...this.state.selected, name] });
       } else {
-        this.setState({ msg: 'game over', gameover: true})
+        this.setState({ msg: 'GAME OVER', gameover: true })
         this.reset();
         setTimeout(() => {
-          this.setState({ msg: 'new game in 3' });
+          this.setState({ countdown: 3 });
         }, 1000)
         setTimeout(() => {
-          this.setState({ msg: 'new game in 2' });
+          this.setState({ countdown: 2 });
         }, 2000)
         setTimeout(() => {
-          this.setState({ msg: 'new game in 1' });
+          this.setState({ countdown: 1 });
         }, 3000)
       }
     } else {
@@ -85,7 +86,8 @@ class App extends Component {
       score: 0,
       highScore: this.state.highScore,
       selected: [],
-      gameover: false
+      gameover: false,
+      countdown: 3
     });
     this.shuffleChars()
     }, 4000);
@@ -134,6 +136,7 @@ class App extends Component {
           msg={this.props.msg}
           score={this.state.score}
           gameover={this.state.gameover}
+          countdown={this.state.countdown}
           handleClick={this.handleClick}
           reset={this.reset}
         />

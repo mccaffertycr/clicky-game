@@ -1,7 +1,7 @@
 .gameover {
-  background-color: black;
-  max-width: auto;
   color: white;
+  font-size: 125px;
+  margin-top: 10%;
 }
 
 .winner {

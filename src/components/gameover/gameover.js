@@ -10,8 +10,8 @@ const GameOver = (props) => {
     )
   } else {
     return(
-      <div className="container gameover text-center">
-        {props.msg}
+      <div className="container text-center">
+        <h1 className="gameover">{props.countdown}</h1>
       </div>
     )
   }
