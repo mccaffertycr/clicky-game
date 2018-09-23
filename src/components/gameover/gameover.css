@@ -1,0 +1,15 @@
+.gameover {
+  background-color: black;
+  max-width: auto;
+  color: white;
+}
+
+.winner {
+  background: url('../../winner.jpg');
+  min-height: 100%;
+  height: 611px;
+}
+
+.new-game {
+  margin-top: 35%;
+}

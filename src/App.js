@@ -5,6 +5,7 @@ import Nav from './components/nav/nav';
 import Header from './components/header/header';
 import Scoreboard from './components/scoreboard/scoreboard';
 import ImgCard from './components/imgCard/imgCard';
+import GameOver from './components/gameover/gameover';
 
 
 function randomChars(array) {
@@ -21,7 +22,8 @@ class App extends Component {
     score: 0,
     highScore: 0,
     chars: chars,
-    selected: []
+    selected: [],
+    gameover: false
   }
 
   shuffleChars = () => {
@@ -29,12 +31,31 @@ class App extends Component {
     this.setState({chars: shuffled});
   }
 
-  handleClick = name => {
-    if (this.state.selected.indexOf(name) === -1) {
-      this.increment();
-      this.setState({ selected: [...this.state.selected, name] });
+  handleClick = (name) => {
+    if (!this.state.gameover) {
+      if (this.state.selected.indexOf(name) === -1) {
+        this.increment();
+        this.setState({ selected: [...this.state.selected, name] });
+      } else {
+        this.setState({ msg: 'game over', gameover: true})
+        this.reset();
+        setTimeout(() => {
+          this.setState({ msg: 'new game in 3' });
+        }, 1000)
+        setTimeout(() => {
+          this.setState({ msg: 'new game in 2' });
+        }, 2000)
+        setTimeout(() => {
+          this.setState({ msg: 'new game in 1' });
+        }, 3000)
+      }
     } else {
-      this.reset();
+      this.setState({ 
+        msg: 'Click any character to begin', 
+        selected: [],
+        score: 0,
+        gameover: false
+      });
     }
   }
 
@@ -50,24 +71,28 @@ class App extends Component {
     if (newScore === 12) {
       this.setState({ 
         msg: 'You win!', 
-        score: 0,
-        selected: []
+        selected: [],
+        gameover: true
       });
     }
     this.shuffleChars();
   };
 
   reset = () => {
+    setTimeout(() => {  
     this.setState({
-      msg: 'You guessed incorrectly!',
+      msg: 'Click any character to begin',
       score: 0,
       highScore: this.state.highScore,
-      selected: []
+      selected: [],
+      gameover: false
     });
-    this.shuffleChars();
+    this.shuffleChars()
+    }, 4000);
   }
 
   render() {
+    if (!this.state.gameover) {
     return (
       <Wrapper>
         <Nav />
@@ -77,8 +102,8 @@ class App extends Component {
           score={this.state.score}
           highScore={this.state.highScore}
         />
-        <div className="container">
-        {
+        <div className="container">  
+        { 
           this.state.chars.map(char => (
             <ImgCard 
               key={char.name}
@@ -94,6 +119,28 @@ class App extends Component {
         </div>
       </Wrapper>
     )
+  } else {
+    return (
+    <Wrapper>
+      <Nav />
+      <Header />
+        <Scoreboard 
+          msg={this.state.msg}
+          score={this.state.score}
+          highScore={this.state.highScore}
+        />
+      <div className="container">  
+        <GameOver 
+          msg={this.props.msg}
+          score={this.state.score}
+          gameover={this.state.gameover}
+          handleClick={this.handleClick}
+          reset={this.reset}
+        />
+      </div>
+    </Wrapper>
+    )
+  }
   }
 }
 
